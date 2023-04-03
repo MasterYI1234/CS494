@@ -1,0 +1,172 @@
+<title> CS494 -- Lab 4 -- Our Friend Floyd</title>
+
+<h3> CS494 -- Lab 4 -- Our Friend Floyd</h1>
+<UL> <LI> CS494
+<LI> <a href=http://web.eecs.utk.edu/~jplank>James S. Plank</a>
+<LI> <a href=http://web.eecs.utk.edu/~jplank/plank/classes/cs494/494/labs/Lab-4-Floyd/index.html>This file:
+     <b>http://web.eecs.utk.edu/~jplank/plank/classes/cs494/494/labs/Lab-4-Floyd/index.html</b></a>
+<LI> Lab Directory: <b>/home/plank/cs494/labs/Lab-4-Floyd</b>
+</UL>
+</h3>
+
+<hr>
+Your job is to do the 600 point problem from Topcoder SRM 626, D1.  Here is the
+<a href=http://community.topcoder.com/stat?c=problem_statement&pm=13218&rd=15859>Problem Statement.</a>.  You don't have to do it topcoder-style (although you can do that to help you test).
+Instead, you need to read each set of parameters on standard input, each on its own 
+line.  Here's example 0:
+
+<pre>
+UNIX> <font color=darkred><b>cat Example-0.txt</b></font>
+3
+1 1 2  2 3 3
+2 3 1  3 1 2
+1 5 1 10 1 1
+1
+UNIX> <font color=darkred><b>NegativeGraphDiv1 < Example-0.txt</b></font>
+-9
+UNIX> <font color=darkred><b></b></font>
+</pre>
+
+I have the rest of the topcoder examples in the lab directory as well:
+
+<pre>
+UNIX> <font color=darkred><b>NegativeGraphDiv1 < Example-1.txt</b></font>
+-10000000
+UNIX> <font color=darkred><b>NegativeGraphDiv1 < Example-2.txt</b></font>
+-9
+UNIX> <font color=darkred><b>NegativeGraphDiv1 < Example-3.txt</b></font>
+-98765
+UNIX> <font color=darkred><b>NegativeGraphDiv1 < Example-4.txt</b></font>
+-15328623718914
+UNIX> <font color=darkred><b>time NegativeGraphDiv1 < Example-4.txt</b></font>
+-15328623718914
+0.396u 0.004s 0:00.40 97.5%	0+0k 0+0io 0pf+0w
+UNIX> <font color=darkred><b></b></font>
+</pre>
+
+Example 4 is kind of a big one, but it doesn't max out the constraints.  I'll
+have some in the gradescripts that do max out the constraints.
+
+<pre>
+UNIX> <font color=darkred><b>head -n 1 Example-4.txt</b></font>
+40
+UNIX> <font color=darkred><b>sed -n 4p Example-4.txt | wc</b></font>
+      1     442    2593
+UNIX> <font color=darkred><b>tail -n 1 Example-4.txt</b></font>
+160743953
+UNIX> <font color=darkred><b></b></font>
+</pre>
+
+The gradescript <i>will</i> time your program, and you need to come in under two seconds
+of user time when compiled with -O2.
+<p>
+I'm not testing your error checking.
+
+<hr>
+
+This problem has three components to it, and they all have a Floyd-Warshall flavor to them.
+<hr>
+<h3>Part 1</h3>
+This is the actual Floyd Warshall component.  Make an adjacency matrix out of the smallest
+weight edges from each node to each other node (with zero-weight self-edges).  
+Run Floyd-Warshall on that to create a 
+matrix of shortest paths from every node to every other node.
+Call this matrix S.  If <b>charges</b> equals 0, you can use this matrix to return the answer.
+<p>
+While you're at it, create an adjacency matrix that has the largest weight edges from every
+node to every other node (zero if there is no edge).  Call that matrix L.
+
+<p>
+To help you, you can give an optional command line argument to my program (your program
+does not have to do this).  If the argument is "P0", then the program will print out the
+original adjacency matrix, and if it's "P1", then the program will print out S:
+
+<pre>
+UNIX> <font color=darkred><b>mv a.out NegativeGraphDiv1</b></font>
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P0 < Example-0.txt</b></font>
+   6000000         1         5
+         1   6000000        10
+         1         1   6000000
+-9
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P1 < Example-0.txt</b></font>
+         0         1         5
+         1         0         6
+         1         1         0
+-9
+UNIX> <font color=darkred><b></b></font>
+</pre>
+
+<hr>
+
+<h3>Part 2</h3>
+Now create a new matrix, which we'll call A.  This is going to be a matrix of shortest path 
+lengths from each node to each other node, where there is <i>exactly</i> one negative edge used.  
+<p>
+You make this by enumerating the following:
+<UL>
+<LI> For every starting node f.
+<LI> For every ending node t;
+<LI> For every intemediate starting node i;
+<LI> For every intemediate ending node j:
+</UL>
+Consider the path f->i, (i,j), j->t, where the length of f->i and j->t come from S, and 
+(i,j) is the longest edge from i to j (in L), multiplied by -1 to make it negative.
+Set A[f][t] to be the shortest of these for all i and j.
+<p>
+You can give my executable the argument "P2" to see my A matrix:
+
+<pre>
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P2 < Example-0.txt</b></font>
+        -8        -8        -9
+        -9        -9       -10
+        -8        -8        -9
+-9
+UNIX> <font color=darkred><b></b></font>
+</pre>
+
+<p>
+<hr>
+
+<h3>Part 3</h3>
+
+Now, you want to create a matrix <i>A<sub>charges</sub></i> for an 
+arbitrary value of <i>charges</i>.  <i>A<sub>charges</sub></i> is going to be the matrix of shortest paths from <i>i</i> to <i>j</i> that have exactly <i>charges</i> negative
+edges.  If you have <i>A<sub>i</sub></i> and <i>A<sub>j</sub></i>, and <i>x</i> equals <i>i+j</i>, then you can 
+make <i>A<sub>x</sub></i> from <i>A<sub>i</sub></i> and <i>A<sub>j</sub></i>.  You do that by considering all paths 
+from <i>f</i> to <i>z</i> (using <i>A<sub>i</sub></i>) and <i>z</i> to <i>t</i> (using <i>A<sub>j</sub></i>) for every possible intermediate
+node <i>z</i>.
+<p>
+Given that, you should be able to make any arbitrary 
+<i>A<sub>x</sub></i> in <i>O(log x)</i> time. 
+<p>
+If you give my executable "P3", it will print the final 
+<i>A<sub>charges</sub></i> matrix.  I won't show this on Example 0, since <i>charges</i> equals
+1 there.  Here's example 2:
+
+<pre>
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P0 < Example-2.txt</b></font>
+   6000000         1
+         4   6000000
+-9
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P1 < Example-2.txt</b></font>
+         0         1
+         4         0
+-9
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P2 < Example-2.txt</b></font>
+        -3        -6
+        -4        -3
+-9
+UNIX> <font color=darkred><b>NegativeGraphDiv1 P3 < Example-2.txt</b></font>
+       -10        -9
+        -7       -10
+-9
+UNIX> <font color=darkred><b></b></font>
+</pre>
+
+<hr>
+I don't know if you have analyzed running times yet, but Part 1 is 
+<i>O(N<sup>3</sup>)</i>, 
+Part 2 is 
+<i>O(N<sup>4</sup>)</i>, 
+and Part 3 is
+<i>O(N<sup>3</sup>log(charges))</i>.
