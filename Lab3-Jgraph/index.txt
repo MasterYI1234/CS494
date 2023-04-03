@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<Title>LAB JGRAPH-SiCheng Yi</Title>
+</HEAD>
+<BODY BGCOLOR="WHITE">
+<H1 ALIGN="CENTER">LAB JGRAPH - SiCheng Yi</H1>
+<HR>
+<h4>Introduction</h4>
+
+<BR>
+<p>This Lab is use C++ and Jgraph.<br>
+    The purpose of this Lab is to make a verification code. There are many ways of thinking. Verification codes are common things in our lives. This code itself is not a verification code, but the corresponding verification code is output based on the user's input.</p><BR CLEAR="ALL"><br>
+    You can modify the jgr file to add something else for each letter, such as a pattern.
+
+<!-- Rest of Sample Page Deleted -->
+
+<h4>Direction for use</h4>
+<LI>Use make to do the makefile
+<LI>It will ask you what letters do you want, Take turns to input them, Letters should be lowercase and use enter to make the turn.
+<LI>Use jgraph graph.jgr | ps2pdf - | convert graph.jpg to product the verification code, the verification code name will be graph.jpg
+
+
+<h4>Solution</h4>
+There are several steps in the preparation of this Lab, The solution works as follows:<br>
+<UL>
+<LI>To write 26 pictures of letters A-Z and make the name as 'a.xxx' 'b.xxx' ...., you can add some decorative designs to the jgr file or adjust the case of the letters, so that we can get 26 jpg files through 26 ps files.<br>
+Use jgraph filename.jar | pa2pdf - | convert - filename.ps <br>
+The jgr file is like this:<br>
+newgraph<br>
+  xaxis min 0 max 10 hash 1 mhash 0 size 5 nodraw<br>
+  yaxis min 0 max 10 hash 1 mhash 0 size 5  nodraw<br>
+
+（You can put patterns or backgrounds here, for example：）
+newcurve marktype none linetype dashed color 1 0 0<br>
+         pts 0 4  1 5  2 6  3 4  <br>
+
+newstring hjl vjb x 1 y 4 <br>
+          fontsize 600 font Times-Italic : A<br>
+
+<LI>Important: Now we have 26 ps file, we need to open the ps file then delete the word“showpage”, if it have the "showpage" and use multiple "convert" in your jgr, "convert" will creates multiple files.
+
+<LI> Now we should start to prepare the background of the picture name 'graph.jgr' and make them together. We should pay attention to the size of each picture. A verification code has four letters, so we can design the jgraph x = 10, y = 10. Then design the size of the background picture as x = 60, y = 20. This will have enough space. Like this:<br>
+newgraph<br>
+xaxis min 0 max 60 hash 10 mhash 0<br>
+grid_lines no_draw_hash_marks no_auto_hash_labels<br>
+ 
+yaxis min 0 max 20 hash 10 mhash 0<br>
+grid_lines no_draw_hash_marks no_auto_hash_labels<br>
+
+<LI> Since we need to operate on the picture, we should design a cpp file to operate graph.jgr, we can use ofstream to open and write the file. In this cpp, we get the input first, and then we can transfer the user’s Four inputs are stored in four strings, and their file types are added to these four strings, like: 
+string numberA, numberB, numberC, numberD; <br>
+     cout<<" What letters do you want?(4 letters) "<<endl;<br>
+     cin>>numberA>>numberB>>numberC>>numberD;<br>
+string A,B,C,D;<br>
+A = numberA+".ps";<br>
+B = numberB+".ps";<br>
+C = numberC+".ps";<br>
+D = numberD+".ps";<br>
+
+<LI>Now that we have the picture we should get, we start writing graph.jgr:<br>
+ofstream MyFile("graph.jgr");<br>
+
+
+   MyFile << "newgraph\n";<br>
+ （verification code is always small picture, so don't set the size too large）
+   MyFile << "xaxis min 0 max 60 hash 10 mhash 0\n";<br>
+   MyFile << "grid_lines no_draw_hash_marks no_auto_hash_labels\n";<br>
+   MyFile << "\n";<br>
+   MyFile << "yaxis min 0 max 20 hash 10 mhash 0 \n";<br>
+   MyFile << "grid_lines no_draw_hash_marks no_auto_hash_labels\n";<br>
+   MyFile << "\n";<br>
+ （Set the background）
+   MyFile << "newcurve marktype box marksize 60 20 cfill 5 .5 0 pts 30 10\n";
+ （Put the verification code on it）
+   MyFile << "newcurve eps letter/" + A + " marksize 10 10 pts 15 10\n" ;<br>
+   MyFile << "newcurve eps letter/" + B + " marksize 10 10 pts 25 10\n" ;<br>
+   MyFile << "newcurve eps letter/" + C + " marksize 10 10 pts 35 10\n" ;<br>
+   MyFile << "newcurve eps letter/" + D + " marksize 10 10 pts 45 10\n" ;<br>
+
+   MyFile.close();<br>
+
+<LI>Run cpp, we can get the required'graph.jgr', and then use Jgraph to generate the verification code we need like jgraph graph.jgr | ps2pdf - | convert - graph.jpg <br>
+<LI>Finally, write a makefile to compile them in order.<br>
+</UL>
+
+<h4>Some other ideas</h4>
+We can make simple modifications to this program to change its role.
+<LI>We can change the step of obtaining user input, but randomly generate four letters into the string: numberA, numberB, numberC, numberD.<br>
+<LI>Add a new variable (True or False) named 'check'.<br>
+<LI>After generating the verification code, we ask the user to input: checknumberA, checknumberB, checknumberC, checknumberD.<br>
+<LI>If if they are equal to numberA, numberB, numberC, numberD. Then we change 'check' to T, and if it is not equal we change the 'check' to F.<br>
+<LI>Now, we can know whether the user has entered the correct verification code, if'check' is T, we can do other things, if'check' is F, we can output "Verification code input error."<br>
+
+</BODY>
+</HTML>

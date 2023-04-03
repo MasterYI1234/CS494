@@ -1,0 +1,76 @@
+<title> CS494 -- Lab 5: SIMD</title>
+
+<h2> CS494 -- Lab 5: SIMD</h2>
+<UL> <LI> CS494
+<LI> Fall, 2020
+<LI> <a href=http://web.eecs.utk.edu/~jplank>James S. Plank</a>
+<LI> <a href=http://web.eecs.utk.edu/~jplank/plank/classes/cs494/Labs/Lab-5-SIMD/index.html>This file:
+     <b>http://web.eecs.utk.edu/~jplank/plank/classes/cs494/Labs/Lab-5-SIMD</b></a>
+<LI> Lab Directory: <b>/home/plank/cs494/Labs/Lab-5-SIMD</b>
+</UL>
+</h3>
+
+Another simple lab writup.  Write two programs:
+
+<UL>
+<LI> 
+<b>The-Tips-Floyd-Bits-Packed-SIMD.cpp</b> -- This implements the <b>TheTips</b>
+class defined in
+<b><a href=The-Tips.h>The-Tips.h</a></b>:
+
+<p><center><table border=3 cellpadding=3><td><pre>
+class TheTips {
+  public:
+    double solve(vector &lt;string&gt; clues, vector &lt;int&gt; probability, int print);
+};
+</pre></td></table></center>
+<p>
+You should implement this class as described in the
+<a href=http://web.eecs.utk.edu/~jplank/plank/classes/cs494/494/notes/Floyd/index.html>Floyd-Warshall</a> lecture notes, by packing the matrix into bits, and then using <b>_mm_or_si128()</b>.
+<p>
+<LI> <b>AP-Flow-SIMD.cpp</b> -- This implements the <b>APFlow</b> class, defined in
+<b><a href=AP-Flow.h>AP-Flow.h</a></b>:
+
+<p><center><table border=3 cellpadding=3><td><pre>
+class APFlow {
+  public:
+    int N;
+    uint8_t *Adj;
+    uint8_t *Flow;
+    void CalcFlow();
+};
+</pre></td></table></center><p>
+
+You should also do this as
+described in the
+<a href=http://web.eecs.utk.edu/~jplank/plank/classes/cs494/494/notes/Floyd/index.html>Floyd-Warshall</a> lecture notes, by using the SIMD intrinsics 
+<b>_mm_set1_epi8()</b>, 
+<b>_mm_min_epu8()</b> and 
+<b>_mm_max_epu8()</b>.
+</UL>
+
+There is a makefile in this directory, plus header files and <b>Main</b> files
+(plus <b>MOA.h</b> and <b>MOA.c</b>).
+Copy these
+over and use them, but you may not modify them.  When you submit, you should only sumbit
+<b>The-Tips-Floyd-Bits-Packed-SIMD.cpp</b> and
+<b>AP-Flow-SIMD.cpp</b>.  Your teaching assistant will compile them with the makefile
+and the versions of 
+<b>MOA.h</b>,
+<b>MOA.c</b>,
+<b>The-Tips.h</b>,
+<b>The-Tips-Main.cpp</b>,
+<b>AP-Flow.h</b> and
+<b>AP-Flow-Main.cpp</b> that are in this lab directory.  
+<p>
+<i>In particular, do not use the versions of
+<b>The-Tips-Main.cpp</b> and
+<b>AP-Flow-Main.cpp</b> that are in the Floyd-Warshall lecture notes, as they are different
+from these versions.  These versions have added a timeout after 4 seconds.</i>
+
+<p>
+Your TA will inspect your code to make sure that it is using SIMD correctly.  The gradescripts
+will timeout and call your programs incorrect if they take longer than 4 seconds.
+<p>
+Have fun!  After doing this lab, you get to put "Intel SIMD Extensions" onto your resume.  
+You're welcome.

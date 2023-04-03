@@ -1,0 +1,53 @@
+mod self is 0
+N is 2
+the size of and uint8 is 1
+Need 2 bytes 
+Need 2 bytes 
+buff size is 16
+need 1 128 vect's
+1 1 1 1 0 0 0 0 
+0 0 0 0 1 1 1 1 
+
+
+
+node is 0
+10
+
+node is 1
+00
+
+
+node 0 can get to 0
+---9090-----------------I is 0
+node 0 has a prob of 100.0
+
+
+------node 0 has a prob of 1.0000
+--------------------j is 0
+node 0 can get to 0
+node 0 has  0.000
+now is 1.000
+--------------------j is 1
+get it 
+
+
+
+---9090-----------------I is 1
+node 1 has a prob of 50.0
+
+
+------node 1 has a prob of 0.5000
+--------------------j is 0
+--------------------j is 1
+Node 1 can get to 1
+Node 1 has  0.000
+Now is 0.500000
+get it 
+
+
+
+2get it 
+
+returning 1.500000
+
+1.5000000000

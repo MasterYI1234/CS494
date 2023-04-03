@@ -1,0 +1,12 @@
+newgraph
+xaxis min 0 max 60 hash 10 mhash 0
+grid_lines no_draw_hash_marks no_auto_hash_labels
+ 
+yaxis min 0 max 20 hash 10 mhash 0
+grid_lines no_draw_hash_marks no_auto_hash_labels
+ 
+newcurve marktype box marksize 60 20 cfill 5 .5 0 pts 30 10
+newcurve eps letter/a.ps marksize 10 10 pts 15 10
+newcurve eps letter/b.ps marksize 10 10 pts 25 10
+newcurve eps letter/c.ps marksize 10 10 pts 35 10
+newcurve eps letter/d.ps marksize 10 10 pts 45 10

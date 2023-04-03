@@ -1,0 +1,14 @@
+newgraph
+  xaxis min 0 max 10 hash 1 mhash 0 size 5 nodraw
+  yaxis min 0 max 10 hash 1 mhash 0 size 5  nodraw
+
+newcurve marktype none linetype dashed color 1 0 0
+         pts 0 4  1 5  2 6  3 4  
+
+newstring hjl vjb x 1 y 4 
+          fontsize 600 font Times-Italic : G
+
+
+
+
+

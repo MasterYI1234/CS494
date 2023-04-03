@@ -1,0 +1,320 @@
+--------------------j is 0
+node 0 can get to 0
+node 0 has  0.000
+now is 0.110
+--------------------j is 1
+node 0 can get to 1
+node 1 has  0.000
+now is 0.110
+--------------------j is 2
+--------------------j is 3
+--------------------j is 4
+--------------------j is 5
+--------------------j is 6
+--------------------j is 7
+--------------------j is 8
+node 0 can get to 8
+node 8 has  0.000
+now is 0.110
+--------------------j is 9
+node 0 can get to 9
+node 9 has  0.000
+now is 0.110
+
+
+---9090-----------------I is 1
+node 1 has a prob of 66.0
+
+
+------node 1 has a prob of 0.6600
+--------------------j is 0
+node 1 can get to 0
+node 0 has  0.110
+now is 0.697
+--------------------j is 1
+node 1 can get to 1
+node 1 has  0.110
+now is 0.697
+--------------------j is 2
+node 1 can get to 2
+node 2 has  0.000
+now is 0.660
+--------------------j is 3
+node 1 can get to 3
+node 3 has  0.000
+now is 0.660
+--------------------j is 4
+node 1 can get to 4
+node 4 has  0.000
+now is 0.660
+--------------------j is 5
+node 1 can get to 5
+node 5 has  0.000
+now is 0.660
+--------------------j is 6
+node 1 can get to 6
+node 6 has  0.000
+now is 0.660
+--------------------j is 7
+node 1 can get to 7
+node 7 has  0.000
+now is 0.660
+--------------------j is 8
+node 1 can get to 8
+node 8 has  0.110
+now is 0.697
+--------------------j is 9
+node 1 can get to 9
+node 9 has  0.110
+now is 0.697
+
+
+---9090-----------------I is 2
+node 2 has a prob of 99.0
+
+
+------node 2 has a prob of 0.9900
+--------------------j is 0
+node 2 can get to 0
+node 0 has  0.697
+now is 0.997
+--------------------j is 1
+node 2 can get to 1
+node 1 has  0.697
+now is 0.997
+--------------------j is 2
+Node 2 can get to 2
+Node 2 has  0.660
+Now is 0.996600
+--------------------j is 3
+--------------------j is 4
+--------------------j is 5
+--------------------j is 6
+--------------------j is 7
+--------------------j is 8
+node 2 can get to 8
+node 8 has  0.697
+now is 0.997
+--------------------j is 9
+node 2 can get to 9
+node 9 has  0.697
+now is 0.997
+
+
+---9090-----------------I is 3
+node 3 has a prob of 37.0
+
+
+------node 3 has a prob of 0.3700
+--------------------j is 0
+node 3 can get to 0
+node 0 has  0.997
+now is 0.998
+--------------------j is 1
+node 3 can get to 1
+node 1 has  0.997
+now is 0.998
+--------------------j is 2
+node 3 can get to 2
+node 2 has  0.997
+now is 0.998
+--------------------j is 3
+node 3 can get to 3
+node 3 has  0.660
+now is 0.786
+--------------------j is 4
+node 3 can get to 4
+node 4 has  0.660
+now is 0.786
+--------------------j is 5
+node 3 can get to 5
+node 5 has  0.660
+now is 0.786
+--------------------j is 6
+node 3 can get to 6
+node 6 has  0.660
+now is 0.786
+--------------------j is 7
+node 3 can get to 7
+node 7 has  0.660
+now is 0.786
+--------------------j is 8
+node 3 can get to 8
+node 8 has  0.997
+now is 0.998
+--------------------j is 9
+node 3 can get to 9
+node 9 has  0.997
+now is 0.998
+
+
+---9090-----------------I is 4
+node 4 has a prob of 64.0
+
+
+------node 4 has a prob of 0.6400
+--------------------j is 0
+node 4 can get to 0
+node 0 has  0.998
+now is 0.999
+--------------------j is 1
+node 4 can get to 1
+node 1 has  0.998
+now is 0.999
+--------------------j is 2
+--------------------j is 3
+--------------------j is 4
+Node 4 can get to 4
+Node 4 has  0.786
+Now is 0.922888
+--------------------j is 5
+--------------------j is 6
+--------------------j is 7
+--------------------j is 8
+node 4 can get to 8
+node 8 has  0.998
+now is 0.999
+--------------------j is 9
+node 4 can get to 9
+node 9 has  0.998
+now is 0.999
+
+
+---9090-----------------I is 5
+node 5 has a prob of 45.0
+
+
+------node 5 has a prob of 0.4500
+--------------------j is 0
+node 5 can get to 0
+node 0 has  0.999
+now is 1.000
+--------------------j is 1
+node 5 can get to 1
+node 1 has  0.999
+now is 1.000
+--------------------j is 2
+node 5 can get to 2
+node 2 has  0.998
+now is 0.999
+--------------------j is 3
+node 5 can get to 3
+node 3 has  0.786
+now is 0.882
+--------------------j is 4
+node 5 can get to 4
+node 4 has  0.923
+now is 0.958
+--------------------j is 5
+node 5 can get to 5
+node 5 has  0.786
+now is 0.882
+--------------------j is 6
+node 5 can get to 6
+node 6 has  0.786
+now is 0.882
+--------------------j is 7
+node 5 can get to 7
+node 7 has  0.786
+now is 0.882
+--------------------j is 8
+node 5 can get to 8
+node 8 has  0.999
+now is 1.000
+--------------------j is 9
+node 5 can get to 9
+node 9 has  0.999
+now is 1.000
+
+
+---9090-----------------I is 6
+node 6 has a prob of 21.0
+
+
+------node 6 has a prob of 0.2100
+--------------------j is 0
+node 6 can get to 0
+node 0 has  1.000
+now is 1.000
+--------------------j is 1
+node 6 can get to 1
+node 1 has  1.000
+now is 1.000
+--------------------j is 2
+--------------------j is 3
+--------------------j is 4
+--------------------j is 5
+--------------------j is 6
+Node 6 can get to 6
+Node 6 has  0.882
+Now is 0.906930
+--------------------j is 7
+--------------------j is 8
+--------------------j is 9
+
+
+---9090-----------------I is 7
+node 7 has a prob of 67.0
+
+
+------node 7 has a prob of 0.6700
+--------------------j is 0
+--------------------j is 1
+--------------------j is 2
+--------------------j is 3
+--------------------j is 4
+--------------------j is 5
+--------------------j is 6
+--------------------j is 7
+Node 7 can get to 7
+Node 7 has  0.882
+Now is 0.961123
+--------------------j is 8
+--------------------j is 9
+
+
+---9090-----------------I is 8
+node 8 has a prob of 71.0
+
+
+------node 8 has a prob of 0.7100
+--------------------j is 0
+--------------------j is 1
+--------------------j is 2
+--------------------j is 3
+--------------------j is 4
+--------------------j is 5
+--------------------j is 6
+--------------------j is 7
+--------------------j is 8
+Node 8 can get to 8
+Node 8 has  1.000
+Now is 0.999891
+--------------------j is 9
+
+
+---9090-----------------I is 9
+node 9 has a prob of 62.0
+
+
+------node 9 has a prob of 0.6200
+--------------------j is 0
+--------------------j is 1
+--------------------j is 2
+--------------------j is 3
+--------------------j is 4
+--------------------j is 5
+--------------------j is 6
+--------------------j is 7
+--------------------j is 8
+--------------------j is 9
+Node 9 can get to 9
+Node 9 has  1.000
+Now is 0.999857
+
+
+2get it 
+
+returning 9.587994
+
+9.5879938077
